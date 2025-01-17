@@ -2,13 +2,17 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import psycopg2
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Initialize Flask app
 app = Flask(__name__)
 CORS(app)
 
 # Database connection details
-DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:xJdcGRcrvMVYNlqJuLhavbQkHBxNgFrQ@viaduct.proxy.rlwy.net:10918/railway")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Function to establish a database connection
 def get_db_connection():
